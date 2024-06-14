@@ -8,3 +8,5 @@
 
 ## Solidity is the language in which you write decentralized apps (aka dapps).
 On this walkthrough we learn how to deploy a smart contract step by step in a granular way, from basis (variables, conditionals, mappings, arrays, functions, etc).
+
+### Steps to Run solidity scripts using remix [Remix ethereum](https://remix.ethereum.org/) :
