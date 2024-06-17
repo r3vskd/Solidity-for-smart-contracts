@@ -4,12 +4,6 @@
 
 <img src = 'https://github.com/r3vskd/Solidity-for-smart-contracts/blob/main/resources/Solidity-Developer-a-beginners-guide.png'></img>
 
-### References:
-https://www.alchemy.com/overviews <br>
-https://solidity-by-example.org/ <br>
-https://hardhat.org/hardhat-vscode/docs/overview <br>
-https://docs.web3j.io/4.11.0/smart_contracts/compiling_solidity/ 
-
 # Build a Smart Contract on Ethereum 
 
 ## Solidity is the language in which you write decentralized apps (aka dapps).
@@ -112,6 +106,13 @@ Mappings in Solidity are hash tables that store data as key-values pairs, where 
 A hash table is a data structure that stores data associatively. Data is kept in an array format in a hash table, with each data value having 
 its own unique index value. Hash Tables use an array as a storage medium and employ the hash technique to establish an index from which an element is to be inserted or located.
 
+
+
+### References:
+https://www.alchemy.com/overviews <br>
+https://solidity-by-example.org/ <br>
+https://hardhat.org/hardhat-vscode/docs/overview <br>
+https://docs.web3j.io/4.11.0/smart_contracts/compiling_solidity/ 
 
 
 
