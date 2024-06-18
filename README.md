@@ -107,6 +107,10 @@ A hash table is a data structure that stores data associatively. Data is kept in
 its own unique index value. Hash Tables use an array as a storage medium and employ the hash technique to establish an index from which an element is to be inserted or located.
 <br>
 <img src = 'https://github.com/r3vskd/Solidity-for-smart-contracts/blob/main/resources/hash_mapings.png'></img>
+When the index of the needed data is known, it can get returned extremely quickly. As a result, hash tables are data structures in which insertion and 
+search operations are extremely quick, regardless of the quantity of the data.
+
+
 
 
 ### References:
