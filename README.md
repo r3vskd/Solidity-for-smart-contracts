@@ -105,6 +105,7 @@ Mappings in Solidity are hash tables that store data as key-values pairs, where 
 
 A hash table is a data structure that stores data associatively. Data is kept in an array format in a hash table, with each data value having 
 its own unique index value. Hash Tables use an array as a storage medium and employ the hash technique to establish an index from which an element is to be inserted or located.
+<br>
 <img src = 'https://github.com/r3vskd/Solidity-for-smart-contracts/blob/main/resources/hash_mapings.png'></img>
 
 
