@@ -138,8 +138,218 @@ Function that remove the value of myMap mapping given an address as key.
   }
 ```
 
+## Array
 
+Array in solidity can be used to store multiple values of the same type. Array can have a compile-time fixed size
+or a dynamic size. We will write code to do different operations on array like adding, removing, getting value at 
+index, getting whole array, etc.
 
+Initialize an array:
+Array named arr and not initializing it with values.
+```
+   uint[] public arr;
+```
+
+Array and initilize it with values.
+```    uint[] public arr2 = [1, 2, 3];```
+
+Array with fixed size. In this case, it will be initilized with zeros by default.
+```     uint[10] public myFixedSizeArr; ```
+
+### Getting an element from an array
+Get an element from an array. Here we are just indexing the array using the index passed through the parameter.
+```
+function get(uint i) public view returns (uint) {
+ return arr[i]; 
+ }
+```
+### Append an element to an array
+Function to append an element to an array. This will increase the array length by 1
+```
+function push(uint i) public {
+arr.push(i);
+}
+```
+The push function to append an element to an array. It appends the element at the end of the array.
+
+### Pop an element from an array
+Function to remove an element from an array. This will decrease the array length by 1.
+```
+function pop() public {
+arr.pop(); 
+}
+```
+The pop function to remove an element from an array. It removes the last element from the array.
+
+### Remove an element from an array
+Function to remove an element from an array without changing the array length.
+```
+function remove(uint index) public {
+delete arr[index]; 
+}
+```
+It does not change the array length. It resets the value at index to it's default value, in this case 0.
+
+### Get the length of an array
+Function to get the length of an array.
+```
+function getLength() public view returns (uint) {`
+return arr.length;
+}
+```
+arr.length gives the length of the array.
+
+### Retrieving the entire array
+Solidity provides a way to retrieve the entire array. But it is not recommended to use it for arrays that can grow indefinitely in length.
+```
+    function getArr() public view returns (uint[] memory) {
+        return arr;
+    }
+```
+
+### Removing an element without a gap in the array
+Deleting an element from an array creates a gap in the array. One trick to keep the array compact is to move the last element into the place to delete.
+```
+function removeCompact(uint index) public { // Move the last element into the place to delete arr[index] = arr[arr.length - 1]; // Remove the last element arr.pop(); }
+```
+### What's the difference between remove and pop an element from an array?
+### POP
+The pop function in Solidity is a built-in function that removes the last element from a dynamic array. This operation reduces the length of the array by one.
+#### Example:
+```arr.pop();```
+If arr is [1, 2, 3, 4], calling arr.pop() will modify it to [1, 2, 3].
+
+#### Characteristics:
+- Simple and efficient, as it only removes the last element.
+- No need to specify an index.
+- Cannot remove elements from specific positions other than the end of the array.
+
+### REMOVE
+The remove function is typically a custom function that removes an element from a specific index in a dynamic array.
+#### Example:
+```
+function remove(uint256 index) public {
+    require(index < arr.length, "Index out of bounds");
+    arr[index] = arr[arr.length - 1];
+    arr.pop();
+}
+```
+If arr is [1, 2, 3, 4] and you call remove(1), it will modify the array to [1, 4, 3].
+#### Characteristics:
+- Removes an element from a specific index.
+- Efficient because it only involves a simple reassignment and a pop.
+- Does not preserve the order of elements.
+- This maintains array integrity without preserving the order of elements.
+
+### REMOVECOMPACT
+The removeCompact function is another custom implementation that removes an element from a specific
+index and shifts all subsequent elements to the left to fill the gap, preserving the order of the array.
+#### Example:
+```
+function removeCompact(uint256 index) public {
+ require(index < arr.length, "Index out of bounds");
+  for (uint256 i = index; i < arr.length - 1; i++) {
+   arr[i] = arr[i + 1]; } arr.pop(); 
+   }
+```
+If arr is [1, 2, 3, 4] and you call removeCompact(1), it will modify the array to [1, 3, 4].
+#### Characteristics:
+- Removes an element from a specific index.
+- Preserves the order of elements.
+- Less efficient than the remove function because it involves shifting elements.
+
+### SUMMARY
+ - pop: Removes the last element of the array. Simple and efficient, but limited to the end of the array.
+ - remove: Custom function to remove an element from a specific index by replacing it with the last element and calling pop. Efficient but does not preserve order.
+ - removeCompact: Custom function to remove an element from a specific index and shift subsequent elements to preserve order. Less efficient due to the need to shift elements.
+
+## FUNCTION
+
+### Returning many values from a function
+Unlike other languages, solidity supports returning multiple return values from a function.
+Function that returns three values:
+```
+function returnMany()
+public 
+pure 
+returns (
+uint, 
+bool, 
+uint 
+) 
+{ 
+return (1, true, 2); 
+}
+```
+
+### Returning named values from a function
+We can even name return values.
+```
+function named()
+public 
+pure 
+returns (
+uint x,
+bool b,
+uint y 
+) 
+{ return (1, true, 2);
+}
+```
+
+### Getting return values without return statement
+ - Return values can be assigned to their name.
+ - In this case the return statement can be omitted.
+```
+function assigned()
+public 
+pure 
+returns (
+uint x,
+bool b,
+uint y
+)
+{
+x = 1; 
+b = true; 
+y = 2; 
+}
+```
+
+### Destructuring return values
+Use destructing assignment when calling another function that returns multiple values.
+Code this function:
+```
+function destructingAssigments()
+public 
+pure 
+returns (
+uint, 
+bool, 
+uint, 
+uint, 
+uint
+)
+{ 
+(uint i, bool b, uint j) = returnMany(); 
+
+// Values can be left out. 
+(uint x, , uint y) = (4, 5, 6);
+return (i, b, j, x, y); 
+}
+```
+
+### Limitations of functions
+ - We cannot use map for neither input nor output
+ - But we can use array for input like this:
+ ```   function arrayInput(uint[] memory _arr) public {} ```
+ - We can use array for output as well like this:
+```
+uint[] public arr; 
+function arrayOutput() public view returns (uint[] memory) {
+return arr; 
+}
+```
 
 ### References:
 https://www.alchemy.com/overviews <br>
