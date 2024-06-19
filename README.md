@@ -4,7 +4,7 @@
 
 <img src = 'https://github.com/r3vskd/Solidity-for-smart-contracts/blob/main/resources/Solidity-Developer-a-beginners-guide.png'></img>
 
-# Build a Smart Contract on Ethereum 
+# Solidity Programming Lessons
 
 ## Solidity is the language in which you write decentralized apps (aka dapps).
 On this walkthrough we learn how to deploy a smart contract step by step in a granular way, from basis (variables, conditionals, mappings, arrays, functions, etc).
