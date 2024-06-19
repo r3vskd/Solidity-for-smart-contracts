@@ -10,7 +10,6 @@
 On this walkthrough we learn how to deploy a smart contract step by step in a granular way, from basis (variables, conditionals, mappings, arrays, functions, etc).
 
 ### Steps to Run solidity scripts using [Remix](https://remix.ethereum.org/) :
-
  1- Open remix online debugger on your browser o download the dektop version (.exe)
  2- Go to workspaces and create a file named "HelloWorld.sol"
  3- Write:
@@ -28,7 +27,6 @@ contract HelloWorld{
  8- Once you has verify that, click on my contract and clcik on "Hello".
 
 ## Reading and writing a State Variable 
-
  Create a variable named num.
  `uint public num;`
  Each function call is a new transaction. Every transaction has a transaction fees. 
@@ -36,7 +34,6 @@ contract HelloWorld{
  On the other hand, you can read state variables, for free, without any transaction fee.
 
 ### Reading a state variable
-
  Let's write a function to read the state variable num.
  
  ` function get() public view returns (uint){`
@@ -44,7 +41,6 @@ contract HelloWorld{
  `}`
 
 ### Writing a state variable
-
 Let's write a function to update a state variable `num`.
  
  `function set(uint _num) public {`
@@ -52,7 +48,6 @@ Let's write a function to update a state variable `num`.
  `}`
 
 ## if-else conditionals
-
  Solidity support conditional statements `if`, `else if` and `else`.  
  It also supports a ternary operator.
 
@@ -88,7 +83,6 @@ Let's write a function to update a state variable `num`.
 ### Ternary Operator
   Ternary operator which is a shorthand for an if-else statement.
   Let's write a simple ternary operator to return 1 if the value is less than 10 or 2 if the value is greater than 10.
- 
   ````
   function ternary(uint _x) public pure returns (uint) {
   // if (_x < 10) {
@@ -100,7 +94,6 @@ Let's write a function to update a state variable `num`.
   }
   ````
 ## Mapping
-
 Mappings in Solidity are hash tables that store data as key-values pairs, where the key can be any of the built-in data types supported by Ethereum.
 
 A hash table is a data structure that stores data associatively. Data is kept in an array format in a hash table, with each data value having 
@@ -110,6 +103,41 @@ its own unique index value. Hash Tables use an array as a storage medium and emp
 When the index of the needed data is known, it can get returned extremely quickly. As a result, hash tables are data structures in which insertion and 
 search operations are extremely quick, regardless of the quantity of the data.
 
+Maps are created with the syntax mapping(keyType => valueType).
+keyType can be value types such as uint, address or bytes.
+valueType can be any type including another mapping or an array.
+Mappings are not iterable.
+
+Write a mapping to the store address to uint mapping:
+```
+mapping(address => uint) public myMap;
+```
+### Accessing Mapping Values using Keys
+This contract provides a simple yet effective way to manage numerical data associated with addresses, enabling basic CRUD (Create, Read, Update, Delete) operations on the mapping.
+
+<img src = 'https://github.com/r3vskd/Solidity-for-smart-contracts/blob/main/resources/Screenshot_1.png'></img>
+
+Function that returns the value of a mapping given a key.
+```
+function get(address _addr) public view returns (uint) {
+ return myMap[_addr];
+  }
+```
+### Setting Mapping Values
+Function that sets the value of myMap mapping given an address as key and a uint value.
+```
+ function set(address _addr, uint _i) public {
+  myMap[_addr] = _i;
+   }
+```
+### Removing Mapping Values
+Function that remove the value of myMap mapping given an address as key.
+```
+ function remove(address _addr) public {
+  delete myMap[_addr]; 
+  }
+```
+
 
 
 
@@ -118,8 +146,6 @@ https://www.alchemy.com/overviews <br>
 https://solidity-by-example.org/ <br>
 https://hardhat.org/hardhat-vscode/docs/overview <br>
 https://docs.web3j.io/4.11.0/smart_contracts/compiling_solidity/ 
-
-
 
  
 
