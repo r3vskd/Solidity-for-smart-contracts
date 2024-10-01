@@ -51,7 +51,7 @@ Let's write a function to update a state variable `num`.
  Solidity support conditional statements `if`, `else if` and `else`.  
  It also supports a ternary operator.
 
-### if else statement
+## if else statement
  Let's write a simple if else conditon to return 0 if the value is less than 10 or or 1 if
  the value is greater than 10 and less than 20 or 2 if the value is greater than 20.
  
